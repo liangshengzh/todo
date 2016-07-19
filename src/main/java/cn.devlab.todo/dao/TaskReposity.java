@@ -10,6 +10,8 @@ import org.springframework.data.repository.Repository;
  */
 public interface TaskReposity extends Repository<Task, Long> {
 
-    public Page<Task> findAll(Pageable pageable);
+    Page<Task> findAll(Pageable pageable);
+
+    Task save(Task task);
 
 }
