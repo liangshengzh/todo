@@ -23,19 +23,25 @@ public class TaskController {
     TaskService taskService;
 
     @RequestMapping(method = RequestMethod.GET)
-    public List<Task> list(){
+    public List<Task> list() {
         return taskService.getAllTask();
     }
 
     @RequestMapping(value = "/{taskId}", method = RequestMethod.GET)
-    public Task getTask(@PathVariable Long taskId){
+    public Task getTask(@PathVariable Long taskId) {
         Task task = taskService.getTaskById(taskId);
         return task;
     }
 
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<?> add(@RequestBody Task task){
+    public ResponseEntity<?> add(@RequestBody Task task) {
         taskService.save(task);
         return new ResponseEntity(HttpStatus.CREATED);
+    }
+
+    @RequestMapping(value = "{taskId}", method = RequestMethod.DELETE)
+    public ResponseEntity<?> delete(@PathVariable Long taskId) {
+        taskService.delete(taskId);
+        return new ResponseEntity(HttpStatus.NO_CONTENT);
     }
 }

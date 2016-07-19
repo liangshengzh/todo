@@ -28,7 +28,9 @@ public class TaskServiceImpl implements TaskService {
 
     @Override
     public void delete(Long id) {
-
+        Task task = new Task();
+        task.setId(id);
+        taskReposity.delete(task);
     }
 
     @Override
