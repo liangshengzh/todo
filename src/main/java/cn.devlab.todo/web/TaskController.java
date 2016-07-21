@@ -39,6 +39,12 @@ public class TaskController {
         return new ResponseEntity(HttpStatus.CREATED);
     }
 
+    @RequestMapping(method = RequestMethod.PUT)
+    public ResponseEntity<?> update(@RequestBody Task task) {
+        taskService.save(task);
+        return new ResponseEntity(HttpStatus.OK);
+    }
+
     @RequestMapping(value = "{taskId}", method = RequestMethod.DELETE)
     public ResponseEntity<?> delete(@PathVariable Long taskId) {
         taskService.delete(taskId);
